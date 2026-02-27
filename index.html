@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="sk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Prague Voucher</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;600&display=swap"
+        rel="stylesheet">
+
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            scroll-snap-type: y mandatory;
+            /* 🔥 morph feeling */
+        }
+
+        body {
+            background: #0d0d0f;
+            font-family: Inter, sans-serif;
+            color: white;
+        }
+
+        /* ===== SCENES ===== */
+
+        .scene {
+            height: 100vh;
+            min-height: 100svh;
+            display: grid;
+            place-items: center;
+            padding: 20px;
+            position: relative;
+            scroll-snap-align: start;
+            scroll-snap-stop: always;
+            overflow: hidden;
+        }
+
+        /* blurred bg */
+        .scene::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: var(--bg) center/cover no-repeat;
+            filter: blur(22px) brightness(.6);
+            transform: scale(1.1);
+            z-index: -2;
+        }
+
+        /* dark overlay */
+        .scene::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, .45);
+            z-index: -1;
+        }
+
+        /* ===== IMAGE ===== */
+
+        .media {
+            width: min(92vw, 520px);
+            height: min(58vh, 520px);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, .15);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, .5);
+            background: rgba(0, 0, 0, .2);
+        }
+
+        .media img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            /* whole pinterest pic visible */
+            object-position: center;
+        }
+
+        /* ===== TEXT CARD ===== */
+
+        .card {
+            width: min(92vw, 520px);
+            margin-top: 14px;
+            padding: 18px;
+            border-radius: 20px;
+            background: rgba(0, 0, 0, .35);
+            border: 1px solid rgba(255, 255, 255, .15);
+            backdrop-filter: blur(10px);
+        }
+
+        h1 {
+            margin: 0 0 10px;
+            font-family: "Playfair Display", serif;
+            font-size: clamp(28px, 5vw, 44px);
+            line-height: 1.1;
+        }
+
+        p {
+            margin: 0;
+            font-size: clamp(14px, 3.6vw, 18px);
+            color: rgba(255, 255, 255, .85);
+            line-height: 1.4;
+        }
+
+        .tag {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 7px 12px;
+            border-radius: 999px;
+            background: rgba(0, 0, 0, .55);
+            font-size: 13px;
+        }
+
+        /* ===== MORPH EFFECT ===== */
+
+        .fade {
+            opacity: 0;
+            transform: scale(.96) translateY(25px);
+            transition: all .9s ease;
+        }
+
+        .fade.show {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+        }
+
+        /* final scene */
+        .final {
+            background: #0c0c0f;
+        }
+
+        .final::before,
+        .final::after {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- INTRO -->
+    <section class="scene" style="--bg:url('images/intro.jpg')">
+        <div class="fade">
+            <div class="media">
+                <img src="images/intro.jpg">
+            </div>
+            <div class="card">
+                <h1>Pack your aesthetic outfits…</h1>
+                <p>We’re going somewhere special 🖤</p>
+                <span class="tag">scroll ↓</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- DESTINATION -->
+    <section class="scene" style="--bg:url('images/prague.jpg')">
+        <div class="fade">
+            <div class="media">
+                <img src="images/prague.jpg">
+            </div>
+            <div class="card">
+                <h1>Destination unlocked</h1>
+                <p>Prague ✨</p>
+                <span class="tag">you • me • cozy walks</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- MORNING -->
+    <section class="scene" style="--bg:url('images/gallery.jpg')">
+        <div class="fade">
+            <div class="media">
+                <img src="images/gallery.jpg">
+            </div>
+            <div class="card">
+                <h1>Morning ☕</h1>
+                <span class="tag">Coffee first… galleries & art.<br>
+                    Sooo ur vibe. &lt;3</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- AFTERNOON -->
+    <section class="scene" style="--bg:url('images/bridge.jpg')">
+        <div class="fade">
+            <div class="media">
+                <img src="images/bridge.jpg">
+            </div>
+            <div class="card">
+                <h1>Afternoon 🌆</h1>
+                <span class="tag">Walking through Prague streets.<br>
+                    Karlov most & hidden spots.</span>               
+            </div>
+        </div>
+    </section>
+
+    <!-- EVENING -->
+    <section class="scene" style="--bg:url('images/night.jpg')">
+        <div class="fade">
+            <div class="media">
+                <img src="images/night.jpg">
+            </div>
+            <div class="card">
+                <h1>Evening 🌙</h1>
+                <span class="tag">Dinner somewhere cozy…<br>
+                    just us & Prague lights.</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- FINAL -->
+    <section class="scene final">
+        <div class="fade">
+            <div class="card">
+                <h1>Date: 3.4. -- 4.4. 2026</h1>
+                <p>With me 😝</p>
+                <p style="margin-top:15px;opacity:.7;">Love u sm 🫶</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FINAL - FINAL -->
+    <section class="scene final - FINAL">
+        <div class="fade">
+            <div class="card">
+                <h1>Confirmation required... waiting for your smile 😌</h1>
+                <p style="margin-top:15px;opacity:.7;">mwah 😚</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 🔥 MORPH MAGIC -->
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("show");
+                } else {
+                    entry.target.classList.remove("show");
+                }
+            });
+        }, { threshold: 0.6 });
+
+        document.querySelectorAll(".fade").forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+
+</body>
+
+</html>
